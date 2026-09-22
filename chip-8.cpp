@@ -5,8 +5,7 @@
 #include <fstream>
 
 
-std::vector<std::byte> ReadProgram(char* file_name) 
-{
+std::vector<std::byte> ReadProgram(char* file_name) {
   std::ifstream ch8_file(file_name, std::ios::binary);
   ch8_file.unsetf(std::ios::skipws);
   std::streampos file_size;
@@ -22,25 +21,16 @@ std::vector<std::byte> ReadProgram(char* file_name)
   return program;
 }
 
-int main(int argc, char* argv[]) 
-{ 
+int main(int argc, char* argv[]) { 
   if (argc != 2) {
     std::cout << "Your program received " << argc - 1 << " arguments but expected 1." << std::endl;
     std::cout << "Example:" << std::endl;
     std::cout << "\t./chip-8 tests/IBM_Logo_test.ch8" << std::endl;
     return 1;
   }
-  
-  /*TODO && Notes
-   * - [x] read its bytes
-   *      to use plain char or to not use plain char, that is the question ; 
-   *      https://stackoverflow.com/questions/13642381/c-c-why-to-use-unsigned-char-for-binary-data
-   * - [] create data structures 
-   * - [] the switch statement 
-   * - [] load it into memory (Remember to start at addr 200)
-   * */
-
   std::vector<std::byte> program = ReadProgram(argv[1]);
+
+  // TODO: create datastructures for our stack, display, registers, etc.
 
   return 0;
 }
