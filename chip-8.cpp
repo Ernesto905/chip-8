@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 
+
 std::vector<std::byte> ReadProgram(char* file_name) 
 {
   std::ifstream ch8_file(file_name, std::ios::binary);
