@@ -24,14 +24,15 @@ std::vector<std::byte> ReadProgram(char* file_name) {
 }
 
 int main(int argc, char* argv[]) {
-  std::vector<std::vector<std::byte>> memory; // 4KB ; 4096B
-  std::vector<std::vector<std::byte>> display; // 64 x 32 pixels ; 256B
+  std::byte ZERO{0}; 
+  std::vector<std::byte> memory(200, ZERO); // 4KB ; 4096B
+  std::vector<bool> display(256, 0); // 64 x 32 pixels ; 256B
   std::uint16_t reg_pc;
   std::uint16_t reg_i;
   std::stack<std::uint16_t> stack; 
   std::uint8_t delay_timer;
   std::uint8_t sound_timer;
-  std::byte reg_general_purpose[16]; // TODO: Replace this
+  std::byte reg_general_purpose[16]; 
 
   if (argc != 2) {
     std::cout << "Your program received " << argc - 1 << " arguments but expected 1." << std::endl;
@@ -40,8 +41,9 @@ int main(int argc, char* argv[]) {
     return 1;
   }
   std::vector<std::byte> program = ReadProgram(argv[1]);
+  memory.insert(memory.end(), program.begin(), program.end());
 
-  // TODO: Load the input program into memory 
-
+  // TODO: store font in memory
+  
   return 0;
 }
