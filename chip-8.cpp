@@ -22,7 +22,7 @@ void LoadProgram(char* file_name, std::vector<std::byte>& memory) {
   program.reserve(file_size);
   ch8_file.read(reinterpret_cast<char *>(std::data(program)), file_size);
 
-  memory.insert(memory.end(), program.begin(), program.end());
+  memory.insert(memory.begin() + 200, program.begin(), program.end());
 }
 
 void LoadFont(std::string file_name, std::vector<std::byte>& memory) {
@@ -37,12 +37,13 @@ void LoadFont(std::string file_name, std::vector<std::byte>& memory) {
       hexadecimals.push_back(hex);
     }
   }
+ 
+  memory.insert(memory.begin() + 50, hexadecimals.begin(), hexadecimals.end());
 }
 
 int main(int argc, char* argv[]) {
   std::string font_file = "./font";
-  std::byte ZERO{0}; 
-  std::vector<std::byte> memory(200, ZERO); // 4KB ; 4096B
+  std::vector<std::byte> memory; // 4KB ; 4096B
   std::vector<bool> display(256, 0); // 64 x 32 pixels ; 256B
   std::uint16_t reg_pc;
   std::uint16_t reg_i;
