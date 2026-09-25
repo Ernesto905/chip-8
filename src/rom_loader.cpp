@@ -2,7 +2,7 @@
 #include <cstdint>
 
 
-void LoadProgram(char* file_name, std::vector<std::byte>& memory) {
+void LoadProgram(char* file_name, std::vector<std::uint8_t>& memory) {
   std::ifstream ch8_file(file_name, std::ios::binary);
   ch8_file.unsetf(std::ios::skipws);
   std::streampos file_size;
@@ -11,14 +11,14 @@ void LoadProgram(char* file_name, std::vector<std::byte>& memory) {
   file_size = ch8_file.tellg();
   ch8_file.seekg(0, std::ios::beg);
 
-  std::vector<std::byte> program;
+  std::vector<std::uint8_t> program;
   program.reserve(file_size);
   ch8_file.read(reinterpret_cast<char *>(std::data(program)), file_size);
 
   memory.insert(memory.begin() + 200, program.begin(), program.end());
 }
 
-void LoadFont(std::string file_name, std::vector<std::byte>& memory) {
+void LoadFont(std::vector<std::uint8_t>& memory) {
   std::vector<std::uint8_t> FONTS = {
     0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
     0x20, 0x60, 0x20, 0x20, 0x70, // 1
