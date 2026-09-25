@@ -1,5 +1,5 @@
 # chip-8
-Chip 8 ~~emulator~~ interpreter
+Chip 8 ~~emulator~~ interpreter. Work in progress
 
 # Spec
 https://tobiasvl.github.io/blog/write-a-chip-8-emulator
@@ -18,6 +18,5 @@ cmake --build build
 
 3. Run 
 ```
-cd build
-./chip-8
+./build/chip_8 roms/IBM_Logo_test.ch8
 ```
