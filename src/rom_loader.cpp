@@ -1,5 +1,4 @@
 #include "rom_loader.h"
-#include <cstdint>
 
 
 void LoadProgram(char* file_name, std::vector<std::uint8_t>& memory) {
