@@ -1,4 +1,4 @@
-#include "rom_loader.h"
+#include "core/include/rom_loader.h"
 
 int main(int argc, char* argv[]) {
   std::vector<std::uint8_t> memory; // 4KB ; 4096B
