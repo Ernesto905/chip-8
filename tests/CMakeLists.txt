@@ -1,21 +1,19 @@
-# add executable 
-add_executable(TestRomLoader)
-# add sources  
-target_sources(TestRomLoader
-  PRIVATE
-    test_rom_loader.cpp
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/063de7e9578f82b369302001269680b4b1553359.zip # V1.18.0
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE  
 )
-# link the rom_loader cpp file to your new test target 
+FetchContent_MakeAvailable(googletest)
+
+add_executable(TestRomLoader
+test_rom_loader.cpp)
+
 target_link_libraries(TestRomLoader
   PRIVATE
-    
+    GTest::gtest_main
 )
-# create a function for running your test 
-function()
-  
-endfunction()
-# call the function on two empty example 
-#
-#
-# TODO: look at google standard guide and shadps4 and cmake guide. 
-# How do do you name files, and cmakelist targets?
+
+include(GoogleTest)
+gtest_discover_tests(TestRomLoader)
+
